@@ -1,0 +1,37 @@
+import dash
+import dash_html_components as html
+import dash_core_components as dcc
+
+app = dash.Dash()
+
+app.layout = html.Div(children=[html.H1(children='Sample Dash Web App Dashboard'),
+                                html.Div(children = '''Dash: A web based app to show Bar Graph'''),
+                                dcc.Graph(id='dash_graph',
+                                          figure = {'data': [{'x':[1,2,3,4,5], 'y':[4,6,3,8,1], 'type': 'bar', 'name':'Bread'},
+                                          {'x':[1,2,3,4,5], 'y':[9,6,3,6,1], 'type': 'bar', 'name':'Milk'},
+                                          {'x':[1,2,3,4,5], 'y':[4,6,3,8,1], 'type': 'bar', 'name':'Sugar'},],
+                                          'layout':{'title': 'Dash Example App'}
+}
+),
+                                dcc.Graph(id='dash_graph 2',
+                                          figure = {'data': [{'x':[1,2,3,4,5], 'y':[4,6,3,8,1], 'type': 'bar', 'name':'Aeroplane'},
+                                          {'x':[1,2,3,4,5], 'y':[9,6,3,6,1], 'type': 'bar', 'name':'Car'},
+                                          {'x':[1,2,3,4,5], 'y':[4,6,3,8,1], 'type': 'bar', 'name':'Train'},],
+                                          'layout':{'title': 'Dash Example App 2'}
+}
+)
+                                ])
+app.layout = html.Div([
+    
+    dcc.Dropdown(
+        id = 'first-dropdown',
+        options = [
+            {'label' : 'San Francisco', 'value' : 'SF'},
+            {'label' : 'New York City', 'value' : 'NYC'},
+            {'label' : 'Releigh Durham', 'value' : 'RDU'},
+            ],
+        value = 'NYC'
+        )
+    ])
+if __name__ == '_main_':
+    app.run_server(debug = True)
